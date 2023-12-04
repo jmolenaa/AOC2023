@@ -33,22 +33,24 @@ std::vector<std::string>	split_on_chars(std::string str, std::string delim)
 	return (split_word);
 }
 
-int	main(int argc, char *argv[])
-{
-	std :: vector<std::string>	split_word;
+// int	main(int argc, char *argv[])
+// {
+// 	std :: vector<std::string>	split_word;
 
-	(void)argc;
-	split_word = split_on_word(argv[1], " ");
-	for (std::string str : split_word)
-		std::cout << str << "\n";
-	std::cout << split_word.size() << "\n";
-	std::cout << "On chars\n";
-	split_word = split_on_chars(argv[1], ": ");
-	for (std::string str : split_word)
-		std::cout << "|" << str << "|\n";
-	std::cout<<split_word.size() << "\n";
+// 	(void)argc;
+// 	split_word = split_on_word(argv[1], " ");
+// 	for (std::string str : split_word)
+// 		std::cout << str << "\n";
+// 	std::cout << split_word.capacity() << "\n";
+// 	std::cout << "On chars\n";
+// 	split_word = split_on_chars(argv[1], ": ");
+// 	for (std::string str : split_word)
+// 		std::cout << "|" << str << "|\n";
+// 	// split_word.resize(1);
+// 	std::cout<<split_word.capacity() << "\n";
+// 	// for (std::string str : split_word)
+// 		// std::cout << "|" << str << "|\n";
+// 	return (0);
 
-	return (0);
 
-
-}
+// }
