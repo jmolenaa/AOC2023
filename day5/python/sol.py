@@ -36,10 +36,7 @@ for i, line in enumerate(lines):
 	if i == 0 or i == 1:
 		continue
 	elif line == "\n":
-		print("current map")
-		print(len(current_map))
-		for m in current_map:
-			print(m.s_ran, m.d_ran, m.ran)
+
 		convert_items()
 		current_map.clear()
 	elif line[0].isdigit():
