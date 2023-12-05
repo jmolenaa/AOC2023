@@ -12,8 +12,8 @@ class item_range:
 
 
 def add_range_to_map():
-	ranges = line.split()
-	current_map.append(map_range(ranges[1], int(ranges[1]) + int(ranges[2]), ranges[0], int(ranges[0]) + int(ranges[2])))
+	ranges = list(map(int, line.split()))
+	current_map.append(map_range(ranges[1], ranges[1] + ranges[2], ranges[0], ranges[0] + ranges[2]))
 
 
 def convert_items():
@@ -23,8 +23,8 @@ def convert_items():
 	# converting our current items to the next category based on our list of map ranges
 	for i, item in enumerate(itemspart1):
 		for map in current_map:
-			if int(item) >= map.source_start and int(item) < map.source_end:
-				itemspart1[i] = map.dest_start - map.source_start + int(item)
+			if item >= map.source_start and item < map.source_end:
+				itemspart1[i] = map.dest_start - map.source_start + item
 				break
 
 
@@ -78,26 +78,22 @@ lines = open("input").readlines()
 seeds = lines[0].split()
 del(seeds[0])
 
-itemspart1 = list(seeds)
+itemspart1 = list(map(int, seeds))
 
 itemspart2 = list()
 current_map=list()
 
 
-
-# converting seeds into ranges for out item list
-for i, seed in enumerate(seeds):
-	if i % 2 == 0:
-		itemspart2.append(item_range(seed, seed + seeds[i + 1]))
+# converting seeds into ranges for our item list
+for i, seed in enumerate(seeds[::2]):
+	itemspart2.append(item_range(seed, seed + seeds[i + 1]))
 
 
 
-for i, line in enumerate(lines):
-	if i == 0 or i == 1:
-		continue
+for line in lines[2:]:
 
 	# once we reach a newline we've parsed all the ranges of the current category map, so we convert itemspart2
-	elif line == "\n":
+	if line == "\n":
 		convert_items()
 		current_map.clear()
 
@@ -107,10 +103,7 @@ for i, line in enumerate(lines):
 # another conversion for last category map in input since input doesn't end with newline
 convert_items()
 
-result = list()
-for item in itemspart2:
-	result.append(item.range_start)
-	
+resultpart2 = [item.range_start for item in itemspart2]
 
 print("Answer to part1: ", min(itemspart1))
-print("Answer to part2: ", min(result))
+print("Answer to part2: ", min(resultpart2))
