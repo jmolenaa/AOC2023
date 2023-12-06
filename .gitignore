@@ -163,5 +163,5 @@ a.out
 .vscode
 .idea
 a.out.dSYM*
-*input
-*test_case
+# *input
+# *test_case
