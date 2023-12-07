@@ -8,19 +8,19 @@ def identify_hand(hand):
 	# counting how often it occurs in the hand
 	# I then sort the list to have the highest occurence at the start
 	# I skip the "1" char for part2 reasons, since it's a wildcard and I'll add it later
-	countOfChars = [0] * 5
+	card_occurence = [0] * 5
 	set_hand = set(hand)
 	for i, char in enumerate(set_hand):
 		if char == "1":
 			continue
-		countOfChars[i] = hand.count(char)
-	countOfChars.sort(reverse=True)
+		card_occurence[i] = hand.count(char)
+	card_occurence.sort(reverse=True)
 
 
 	# I count the amount of wildcards, then add them to the highest count of cards
 	# This is always the optimal play int the game, since we have no straights or flushes
 	wildcard = hand.count("1")
-	countOfChars[0] += wildcard
+	card_occurence[0] += wildcard
 
 
 	# depending on which type of hand I have I return an index, the lower the index the weaker the type
@@ -31,19 +31,19 @@ def identify_hand(hand):
 	# 2 - two pair
 	# 1 - pair
 	# 0 - highest card
-	match countOfChars[0]:
+	match card_occurence[0]:
 		case 5:
 			return 6
 		case 4:
 			return 5
 		case 3:
-			match countOfChars[1]:
+			match card_occurence[1]:
 				case 2:
 					return 4
 				case _:
 					return 3
 		case 2:
-			match countOfChars[1]:
+			match card_occurence[1]:
 				case 2:
 					return 2
 				case _:
