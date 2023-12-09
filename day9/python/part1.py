@@ -11,6 +11,7 @@ def main():
 	result = 0
 	result2 = 0
 
+
 	for line in lines:
 		sequence = list(map(int, line.split()))
 		last_number = [sequence[-1]]
