@@ -10,8 +10,7 @@ def get_distance_in_axis(coord1, coord2, empty_axis, expansion):
 
 def main():
 
-	lines = open("input").readlines()
-	lines = [line.strip() for line in lines]
+	lines = [line.strip() for line in open("input").readlines()]
 
 	# making a set of the x coordinates of the empty rows
 	empty_rows = set()
@@ -23,12 +22,7 @@ def main():
 	# making a set of the y coordinates of empty columns
 	empty_columns = set()
 	for i, char in enumerate(lines[0]):
-		same = 1
-		for j in range(len(lines)):
-			if char != lines[j][i]:
-				same = 0
-				break
-		if same == 1:
+		if all(char == lines[j][i] for j in range(len(lines))):
 			empty_columns.add(i)
 
 
@@ -41,8 +35,7 @@ def main():
 
 
 	# looping through the galaxies and their pairs without repeating pairs
-	resultpart1 = 0
-	resultpart2 = 0
+	resultpart1, resultpart2 = 0, 0
 	for i, galaxy in enumerate(galaxies):
 		for galaxy_pair in galaxies[i + 1:]: # i + 1 makes sure we dont repeat pairs
 			resultpart1 += get_distance_in_axis(galaxy[0], galaxy_pair[0], empty_columns, 1)
