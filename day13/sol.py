@@ -27,9 +27,17 @@ def	check_rest(lines, i, smudge_fixed):
 	return smudge_fixed
 
 
-def	find_reflection(lines):
+def	find_reflection_part1(lines):
 	for i in range(1, len(lines)):
-		if lines[i] == lines[i - 1] or try_fix(lines[i], lines[i - 1]) == True:
+		if lines[i] == lines[i - 1]:
+			if check_rest(lines, i, True) == True:
+				return i
+	return 0
+
+
+def	find_reflection_part2(lines):
+	for i in range(1, len(lines)):
+		if lines[i] == lines[i - 1] or  try_fix(lines[i], lines[i - 1]) == True:
 			smudge_fixed = lines[i] != lines[i - 1]
 			if check_rest(lines, i, smudge_fixed) == True:
 				return i
@@ -40,13 +48,18 @@ def main():
 	with open("input") as file:
 		patterns = file.read().split("\n\n")
 
-	result = 0
+	result_part1 = 0
+	result_part2 = 0
 	for pattern in patterns:
 		rows = pattern.split("\n")
 		columns = make_columns(rows)
-		result += find_reflection(rows) * 100
-		result += find_reflection(columns)
-	print(result)
+		result_part1 += find_reflection_part1(rows) * 100
+		result_part1 += find_reflection_part1(columns)
+		result_part2 += find_reflection_part2(rows) * 100
+		result_part2 += find_reflection_part2(columns)
+	print(f"The answer to part 1 is: {result_part1}")
+	print(f"The answer to part 1 is: {result_part2}")
+
 
 
 if __name__ == "__main__":
