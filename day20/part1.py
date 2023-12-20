@@ -69,6 +69,10 @@ def main():
 
 	low = 0
 	high = 0
+	conjections = dict()
+	for output in modules["rx"][1].outputs:
+		print(output)
+
 	conjections = {"vr" : 0, "nl": 0, "lr": 0, "gt": 0}
 	i = 0
 	while True:
