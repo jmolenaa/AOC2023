@@ -4,7 +4,6 @@ def main():
 
 	part1 = 0
 	part2 = 0
-
 	print(f"The answer to part 1 is: {part1}")
 	print(f"The answer to part 2 is: {part2}")
 
