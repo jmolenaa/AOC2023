@@ -70,10 +70,15 @@ def main():
 	low = 0
 	high = 0
 	conjections = dict()
-	for output in modules["rx"][1].outputs:
-		print(output)
+	for module in modules.values():
+		if module == 0:
+			continue
+		for output in module[1].outputs:
+			if output == "rx":
+				for input in module[1].inputs_dict.keys():
+					conjections[input] = 0
 
-	conjections = {"vr" : 0, "nl": 0, "lr": 0, "gt": 0}
+
 	i = 0
 	while True:
 
