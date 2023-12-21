@@ -104,7 +104,7 @@ def	find_step_cycle(grid_info, lines, length, width):
 			if pos[1] - 1 >= 0 and grid[pos[0]][pos[1] - 1] in ".":
 				grid[pos[0]][pos[1] - 1] = 'O'
 				next_positions.append((pos[0], pos[1] - 1))
-	print(len(next_positions))
+	# print(len(next_positions))
 	
 	print(cycle)
 
@@ -183,8 +183,8 @@ def main():
 
 		# print(i)
 	clear_grids(grids, lines)
-	# for grid in grids:
-	# 	find_step_cycle(grid, lines, length, width)
+	for grid in grids:
+		find_step_cycle(grid, lines, length, width)
 
 	print("LOL", 3 **2)
 	traversals = 202300
@@ -258,7 +258,7 @@ def main():
 	# total_positions += step_c_block_unfilled * c_blocks_unfilled
 	# print(d_blocks_filled, c_blocks_filled)
 
-	print(total_positions)
+	print("answe rlol", total_positions)
 	# print(total_positions + 7546)
 	# print(total_positions + 7539)
 
