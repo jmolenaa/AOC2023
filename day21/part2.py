@@ -107,6 +107,7 @@ def	find_step_cycle(grid_info, lines, length, width):
 	# print(len(next_positions))
 	
 	print(cycle)
+	return cycle
 
 
 def	count_steps(grid_info, lines, steps, length, width):
@@ -183,10 +184,9 @@ def main():
 
 		# print(i)
 	clear_grids(grids, lines)
-	for grid in grids:
-		find_step_cycle(grid, lines, length, width)
+	even, uneven = find_step_cycle(grids[0], lines, length, width)
 
-	print("LOL", 3 **2)
+
 	traversals = 202300
 	a_blocks = traversals * 2
 	b_blocks_filled = (traversals - 2) * 2
@@ -206,11 +206,11 @@ def main():
 	c_blocks_unfilled = (traversals - 1)
 	
 	total_positions = 0
-	total_positions = 7539
-	total_positions += a_blocks * 7546
-	total_positions += b_blocks_filled * 7539
-	total_positions += c_blocks_filled * 7539
-	total_positions += d_blocks_filled * 7546
+	total_positions = uneven
+	total_positions += a_blocks * even
+	total_positions += b_blocks_filled * uneven
+	total_positions += c_blocks_filled * uneven
+	total_positions += d_blocks_filled * even
 
 	step_b_block_unfilled = count_steps(grids[1], lines, 130, length, width)
 	print(step_b_block_unfilled)
