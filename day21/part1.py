@@ -1,3 +1,5 @@
+import time
+
 def	make_garden_grid(lines):
 	grid = dict()
 	for i, line in enumerate(lines):
@@ -18,7 +20,7 @@ def main():
 			break
 
 	next_positions = [start_position]
-	for i in range(64):
+	for i in range(1000):
 		positions = next_positions.copy()
 		# print(len(next_positions))
 		# print(next_positions)
@@ -59,4 +61,7 @@ def main():
 	# print(f"The answer to part 2 is: {part2}")
 
 if __name__ == "__main__":
+	start = time.time()
 	main()
+	end = time.time()
+	print(end - start)
