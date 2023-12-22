@@ -214,8 +214,21 @@ def main():
 
 	step_b_block_unfilled = count_steps(grids[1], lines, 130, length, width)
 	print(step_b_block_unfilled)
-	total_positions += step_b_block_unfilled * b_blocks_unfilled
+	total_positions += step_b_block_unfilled
 	
+	step_b_block_unfilled = count_steps(grids[2], lines, 130, length, width)
+	print(step_b_block_unfilled)
+	total_positions += step_b_block_unfilled
+	
+	step_b_block_unfilled = count_steps(grids[3], lines, 130, length, width)
+	print(step_b_block_unfilled)
+	total_positions += step_b_block_unfilled
+	
+	step_b_block_unfilled = count_steps(grids[4], lines, 130, length, width)
+	print(step_b_block_unfilled)
+	total_positions += step_b_block_unfilled
+	
+
 	print("D")
 	step_d_block_unfilled = count_steps(grids[5], lines, 64, length, width)
 
